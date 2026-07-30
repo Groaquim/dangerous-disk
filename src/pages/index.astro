@@ -1,17 +1,75 @@
 ---
-const titreBoutique = "Arc Studio";
+// src/pages/index.astro
+import NavBar from '../pages/NavBar.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{titreBoutique}</title>
-	</head>
-	<body>
-		<h1>{titreBoutique}</h1>
-	</body>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Arc Studio — Marque & Vêtements</title>
+  </head>
+
+  <body>
+    <!-- Inclusion de la barre de navigation -->
+    <NavBar />
+
+    <main class="hero">
+      <div class="hero-content">
+        <h1>Nouvelle Collection</h1>
+        <p>Découvrez nos derniers vêtements créés sur mesure.</p>
+        <a href="/articles" class="cta-button">Voir la boutique</a>
+      </div>
+    </main>
+  </body>
 </html>
+
+<style>
+  /* Reset CSS minimal et polices */
+  :global(*) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: #fafafa;
+    color: #111;
+  }
+
+  /* Section Hero basique */
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: #111;
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>
