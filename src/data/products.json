@@ -28,7 +28,17 @@
     "name": "Hoodie Heavyweight Relic",
     "price": 55.00,
     "category": "Hoodies",
-    "image": "",
+    "description": "Sweat à capuche épais en molleton gratté avec finitions premium. Coupe décontractée offrant un confort maximal et une excellente tenue thermique.",
+    "details": [
+      "85% Coton biologique, 15% Polyester recyclé",
+      "Grammage ultra-lourd : 350 g/m²",
+      "Capuche doublée avec œillets métalliques",
+      "Poche kangourou renforcée"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=1000&q=80"
+    ],
     "gelatoProductUids": {
       "S": "apparel_unisex_hoodie_black_s",
       "M": "apparel_unisex_hoodie_black_m",
@@ -41,7 +51,16 @@
     "name": "Casquette Brodé Arch Studio",
     "price": 28.00,
     "category": "Accessoires",
-    "image": "",
+    "description": "Casquette vintage 6 panneaux non structurée avec patte de serrage réglable en laiton. Broderie haute précision.",
+    "details": [
+      "100% Coton sergé lavé",
+      "Fermeture ajustable avec boucle métallique",
+      "Visière pré-incurvée",
+      "Taille unique standard"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=1000&q=80"
+    ],
     "gelatoProductUids": {
       "ONE_SIZE": "apparel_cap_black_one"
     }

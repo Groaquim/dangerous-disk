@@ -1,18 +1,11 @@
 ---
-interface Props {
-  id: string;
-  name: string;
-  price: number;
-  category: string;
-  image: string;
-}
-
-const { id, name, price, category, image } = Astro.props;
+const { id, name, price, category, images } = Astro.props;
+const displayImage = images && images.length > 0 ? images[0] : 'https://placehold.co/600x800';
 ---
 
 <article class="product-card">
   <a href={`/articles/${id}`} class="image-wrapper">
-    <img src={image} alt={name} loading="lazy" />
+    <img src={displayImage} alt={name} loading="lazy" />
   </a>
   <div class="product-info">
     <span class="category">{category}</span>
