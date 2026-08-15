@@ -1,0 +1,225 @@
+---
+// src/pages/articles/[id].astro
+import Navbar from '../../components/NavBar.astro';
+import ProductGallery from '../../components/ProductsGallery.jsx';
+import products from '../../data/products.json';
+
+// Fonction Astro obligatoire pour générer les routes statiques
+export async function getStaticPaths() {
+  return products.map((product) => ({
+    params: { id: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const sizes = Object.keys(product.gelatoProductUids);
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{product.name} | Arc Studio</title>
+  </head>
+
+  <body>
+    <Navbar />
+
+    <main class="product-page">
+      <div class="product-layout">
+        
+        <!-- Galerie d'images (Île React interactive) -->
+        <section class="gallery-section">
+          <ProductGallery client:load images={product.images} title={product.name} />
+        </section>
+
+        <!-- Informations & Achat -->
+        <section class="product-details">
+          <span class="category">{product.category}</span>
+          <h1 class="product-title">{product.name}</h1>
+          <p class="product-price">{product.price.toFixed(2)} €</p>
+
+          <!-- Sélecteur de taille -->
+          <form class="purchase-form">
+            <div class="size-selection">
+              <label for="size">Taille</label>
+              <div class="size-options">
+                {sizes.map((size) => (
+                  <label class="size-radio">
+                    <input type="radio" name="size" value={size} checked={size === 'M'} />
+                    <span>{size}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Bouton d'action -->
+            <button type="button" class="add-to-cart-btn">
+              Ajouter au panier
+            </button>
+          </form>
+
+          <!-- Description & Caractéristiques -->
+          {product.description && (
+            <div class="description-block">
+              <h3>Description</h3>
+              <p>{product.description}</p>
+            </div>
+          )}
+
+          {product.details && product.details.length > 0 && (
+            <div class="features-block">
+              <h3>Détails du produit</h3>
+              <ul>
+                {product.details.map((detail: string) => (
+                  <li>{detail}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: #fafafa;
+    color: #111;
+  }
+
+  .product-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  .product-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 860px) {
+    .product-layout {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+    }
+  }
+
+  .category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .product-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0.4rem 0 1rem 0;
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .size-selection label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .size-options {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .size-radio input {
+    display: none;
+  }
+
+  .size-radio span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.2s ease;
+  }
+
+  .size-radio input:checked + span {
+    border-color: #111;
+    background: #111;
+    color: #fff;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+    margin-bottom: 2.5rem;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #333;
+  }
+
+  .add-to-cart-btn:active {
+    transform: scale(0.99);
+  }
+
+  .description-block, .features-block {
+    border-top: 1px solid #eaeaea;
+    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .description-block h3, .features-block h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .description-block p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .features-block ul {
+    list-style-position: inside;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

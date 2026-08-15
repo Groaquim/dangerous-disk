@@ -1,10 +1,21 @@
 [
   {
-    "id": "tshirt-archaeology-01",
-    "name": "T-Shirt Minimalist Temple",
-    "price": 32.00,
+    "id": "tshirt-dangerous-temple",
+    "name": "T-Shirt Dangerous Temple",
+    "price": 35.00,
     "category": "T-Shirts",
-    "image": "",
+    "description": "Inspiré par l'architecture classique et le minimalisme moderne. Coupe boxy/oversize confectionnée en coton peigné 100% biologique épais (240 g/m²). Impression numérique haute définition résistante aux lavages répétés.",
+    "details": [
+      "100% Coton biologique peigné",
+      "Grammage lourd : 240 g/m²",
+      "Coupe unisexe décontractée",
+      "Imprimé à la commande via Gelato (zéro surproduction)"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=1000&q=80"
+    ],
     "gelatoProductUids": {
       "S": "apparel_unisex_t-shirt_black_s",
       "M": "apparel_unisex_t-shirt_black_m",
