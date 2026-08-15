@@ -1,5 +1,6 @@
-// src/components/ProductGallery.tsx
+// src/components/ProductsGallery.tsx
 import { useState } from 'react';
+import './ProductsGallery.css';
 
 interface ProductGalleryProps {
   images?: string[];
